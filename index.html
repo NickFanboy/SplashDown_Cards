@@ -25,15 +25,15 @@
                 const deltaX = (x - centerX) / centerX;
                 const deltaY = (y - centerY) / centerY;
 
-                image.style.transform = `perspective(500px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
-                shine.style.transform = `perspective(500px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
+                image.style.transform = `perspective(1000px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
+                shine.style.transform = `perspective(1000px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
                 shine.style.opacity = 1;
                 shine.style['mask-image'] = `linear-gradient(${Math.atan2(deltaY, deltaX) * 180 / Math.PI + 45}deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0))`;
             });
 
             imageContainer.addEventListener('mouseleave', () => {
-                image.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
-                shine.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
+                image.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                shine.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
                 shine.style.opacity = 0;
             });
         </script>
