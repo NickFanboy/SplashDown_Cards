@@ -1,3 +1,51 @@
+:root {
+    --color1: #92f2f2; 
+    --color2: #d6cff1; 
+    --color3: #c4f2e5; 
+    --color4: #a8d0f0; 
+    --color5: #c2dcf2; 
+    --color6: #eed5f2; 
+    --color7: #9cb9fc; 
+    --holographic: 
+        radial-gradient(at 30% -5%, var(--color1), var(--color2), transparent 25%),
+        radial-gradient(at 50% 70%, var(--color3), transparent 30%),
+        radial-gradient(at 70% 0%, var(--color2), transparent 20%),
+        linear-gradient(75deg, var(--color1) 5%, transparent, var(--color4), transparent, var(--color6), transparent, var(--color2), transparent, var(--color3) 90%),
+        radial-gradient(at 30% 50%, var(--color1), transparent 30%),
+        radial-gradient(at 30% 50%, var(--color7), transparent 30%),
+        radial-gradient(at 100% 50%, var(--color1), var(--color5), transparent 50%),
+        linear-gradient(115deg, var(--color1) 5%, var(--color4) 10%, var(--color2), var(--color6) 20%, var(--color4), var(--color4) 30%, var(--color2), var(--color5) 40%, var(--color1), var(--color4) 70%);
+}
+
+body {
+    background-color: midnightblue;
+    color: white;
+    text-align: center;
+}
+
 img {
     max-width: 25rem;
+}
+
+#deformable-image {
+    position: relative;
+    display: inline-block;
+
+    & img {
+    transition: transform 0.1s ease;
+    }
+}
+
+.shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99%;
+    height: 99%;
+    border-radius: 20px;
+    background: var(--holographic);
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    pointer-events: none;
+    mix-blend-mode: hard-light;
 }

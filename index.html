@@ -2,22 +2,22 @@
 <html>
     <head>
         <link rel="stylesheet" href="assets/app.css">
-        <style>
-            #deformable-image {
-                transition: transform 0.1s ease;
-            }
-        </style>
     </head>
     <body>
         <h1>Test Card</h1>
 
-        <img id="deformable-image" src="assets/cards/00 EMPTY CARD.png"/>
+        <div id="deformable-image">
+            <img src="assets/cards/Nick Showcase.png"/>
+            <div class="shine"></div>
+        </div>
 
         <script>
-            const image = document.getElementById('deformable-image');
+            const imageContainer = document.getElementById('deformable-image');
+            const image = imageContainer.querySelector('img');
+            const shine = imageContainer.querySelector('.shine');
 
-            image.addEventListener('mousemove', (event) => {
-                const rect = image.getBoundingClientRect();
+            imageContainer.addEventListener('mousemove', (event) => {
+                const rect = imageContainer.getBoundingClientRect();
                 const x = event.clientX - rect.left; // x position within the element
                 const y = event.clientY - rect.top;  // y position within the element
                 const centerX = rect.width / 2;
@@ -26,10 +26,15 @@
                 const deltaY = (y - centerY) / centerY;
 
                 image.style.transform = `perspective(500px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
+                shine.style.transform = `perspective(500px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
+                shine.style.opacity = 1;
+                shine.style['mask-image'] = `linear-gradient(${Math.atan2(deltaY, deltaX) * 180 / Math.PI + 45}deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0))`;
             });
 
-            image.addEventListener('mouseleave', () => {
+            imageContainer.addEventListener('mouseleave', () => {
                 image.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
+                shine.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
+                shine.style.opacity = 0;
             });
         </script>
     </body>
