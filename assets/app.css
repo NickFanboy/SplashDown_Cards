@@ -27,16 +27,15 @@ img {
     max-width: 25rem;
 }
 
-#deformable-image {
+#player-card {
     position: relative;
     display: inline-block;
 
     & img {
     transition: transform 0.1s ease;
     }
-}
 
-.shine {
+    & .shine {
     position: absolute;
     top: 0;
     left: 0;
@@ -48,4 +47,5 @@ img {
     transition: opacity 0.1s ease;
     pointer-events: none;
     mix-blend-mode: hard-light;
+    }
 }
