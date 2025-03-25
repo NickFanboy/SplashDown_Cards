@@ -24,20 +24,25 @@ body {
 }
 
 img {
+    width: 100%;
     max-width: 25rem;
+    border-radius: 20px;
 }
 
 #player-card {
     position: relative;
     display: inline-block;
     transition: transform 0.1s ease;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;
+    border-radius: 22px;
 
     & .shine {
     position: absolute;
     top: 0;
     left: 0;
-    width: 99%;
-    height: 99%;
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
     background: var(--holographic);
     opacity: 0;
@@ -45,4 +50,8 @@ img {
     pointer-events: none;
     mix-blend-mode: hard-light;
     }
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.2);
 }

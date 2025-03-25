@@ -11,35 +11,79 @@
     <link rel="stylesheet" href="assets/app.css">
 </head>
 <body class="m-3">
-    <h1>Drizzle Season</h1>
-    
-    <div id="player-card">
-        <img src="assets/cards/Nick Showcase.png"/>
-        <div class="shine"></div>
-    </div>
-    
-    <script>
-        const imageContainer = document.getElementById('player-card');
-        const shine = imageContainer.querySelector('.shine');
+    <h1 class="fw-bold">Drizzle Season</h1>
         
-        imageContainer.addEventListener('mousemove', (event) => {
-            const rect = imageContainer.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const deltaX = (x - centerX) / centerX;
-            const deltaY = (y - centerY) / centerY;
-            
-            imageContainer.style.transform = `perspective(1000px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
-            shine.style.opacity = 1;
-            shine.style['mask-image'] = `linear-gradient(${Math.atan2(deltaY, deltaX) * 180 / Math.PI + 45}deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0))`;
-        });
+        <div id="cards-container">
+        </div>
         
-        imageContainer.addEventListener('mouseleave', () => {
-            imageContainer.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-            shine.style.opacity = 0;
-        });
+        <script>
+            fetch('assets/drizzle_season.json')
+                .then(response => response.json())
+                .then(data => {
+                    const playerCardsContainer = document.getElementById('cards-container');
+                    for (const playerName in data) {
+                        const player = data[playerName];
+                        const playerCard = document.createElement('div');
+                        playerCard.className = 'row p-2';
+                        playerCard.innerHTML = `
+                            <div class="card text-white p-2">
+                                <div class="row g-0">
+                                    <div class="col-lg-3 m-2">
+                                        <div id="player-card">
+                                            <img src="assets/cards/${player.card_name} Showcase.png"/>
+                                            <div class="shine"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="card-body">
+                                            <div class="col m-2 text-start">
+                                                <h3>Player Name: ${playerName}</h3>
+                                                <h3>Role: ${player.role}</h3>
+                                                <h3>Trophies: Gold x${player.gold}, Silver x${player.silver}, Bronze x${player.bronze}</h3>
+                                                <h3>Weapon Pool: ${player.weapon_1}, ${player.weapon_2}, ${player.weapon_3}</h3>
+                                                <h3>Bio: ${player.bio}</h3>
+                                                <h3>Pros: ${player.pros}</h3>
+                                                <h3>Cons: ${player.cons}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        playerCardsContainer.appendChild(playerCard);
+                    }
+                });
+        </script>
+        <script>
+            document.addEventListener('mousemove', (event) => {
+                const imageContainers = document.querySelectorAll('#player-card');
+                imageContainers.forEach(imageContainer => {
+                    const rect = imageContainer.getBoundingClientRect();
+                    if (event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom) {
+                        const shine = imageContainer.querySelector('.shine');
+                        const x = event.clientX - rect.left;
+                        const y = event.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const deltaX = (x - centerX) / centerX;
+                        const deltaY = (y - centerY) / centerY;
+
+                        imageContainer.style.transform = `perspective(1000px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
+                        shine.style.opacity = 1;
+                        shine.style['mask-image'] = `linear-gradient(${Math.atan2(deltaY, deltaX) * 180 / Math.PI + 45}deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0))`;
+                    }
+                });
+            });
+
+            document.addEventListener('mouseout', (event) => {
+                const imageContainers = document.querySelectorAll('#player-card');
+                imageContainers.forEach(imageContainer => {
+                    const rect = imageContainer.getBoundingClientRect();
+                    const shine = imageContainer.querySelector('.shine');
+                    imageContainer.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                    shine.style.opacity = 0;
+                });
+            });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
