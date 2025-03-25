@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/app.css">
 </head>
 <body class="m-3">
-    <h1>Test Card</h1>
+    <h1>Drizzle Season</h1>
     
     <div id="player-card">
         <img src="assets/cards/Nick Showcase.png"/>
@@ -20,27 +20,24 @@
     
     <script>
         const imageContainer = document.getElementById('player-card');
-        const image = imageContainer.querySelector('img');
         const shine = imageContainer.querySelector('.shine');
         
         imageContainer.addEventListener('mousemove', (event) => {
             const rect = imageContainer.getBoundingClientRect();
-            const x = event.clientX - rect.left; // x position within the element
-            const y = event.clientY - rect.top;  // y position within the element
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             const deltaX = (x - centerX) / centerX;
             const deltaY = (y - centerY) / centerY;
             
-            image.style.transform = `perspective(1000px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
-            shine.style.transform = `perspective(1000px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
+            imageContainer.style.transform = `perspective(1000px) rotateX(${deltaY * 10}deg) rotateY(${deltaX * -10}deg)`;
             shine.style.opacity = 1;
             shine.style['mask-image'] = `linear-gradient(${Math.atan2(deltaY, deltaX) * 180 / Math.PI + 45}deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0))`;
         });
         
         imageContainer.addEventListener('mouseleave', () => {
-            image.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-            shine.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            imageContainer.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
             shine.style.opacity = 0;
         });
         </script>
