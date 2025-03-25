@@ -23,6 +23,16 @@
                     const playerCardsContainer = document.getElementById('cards-container');
                     for (const playerName in data) {
                         const player = data[playerName];
+                        var weapon_pool;
+                        if(player.weapon_2 != null){
+                            if(player.weapon_3 != null){
+                                weapon_pool = `${player.weapon_1}, ${player.weapon_2}, ${player.weapon_3}`;
+                            } else {
+                                weapon_pool = `${player.weapon_1}, ${player.weapon_2}`;
+                            }
+                        } else {
+                            weapon_pool = "${player.weapon_1}";
+                        };
                         const playerCard = document.createElement('div');
                         playerCard.className = 'row p-2';
                         playerCard.innerHTML = `
@@ -40,7 +50,7 @@
                                                 <h3><span class="fw-bold">Player Name:</span> ${playerName}</h3>
                                                 <h3><span class="fw-bold">Role:</span> ${player.role}</h3>
                                                 <h3><span class="fw-bold">Trophies:</span> Gold x${player.gold}, Silver x${player.silver}, Bronze x${player.bronze}</h3>
-                                                <h3><span class="fw-bold">Weapon Pool:</span> ${player.weapon_1}, ${player.weapon_2}, ${player.weapon_3}</h3>
+                                                <h3><span class="fw-bold">Weapon Pool:</span> ` + weapon_pool + `</h3>
                                                 <h3><span class="fw-bold">Bio:</span> ${player.bio}</h3>
                                                 <h3><span class="fw-bold">Pros:</span> ${player.pros}</h3>
                                                 <h3><span class="fw-bold">Cons:</span> ${player.cons}</h3>
