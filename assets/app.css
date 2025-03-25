@@ -36,6 +36,7 @@ img {
     border-right: 2px solid rgba(0, 0, 0, 0.5);
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 22px;
+    touch-action: none;
 
     & .shine {
     position: absolute;
