@@ -39,17 +39,22 @@ img {
     touch-action: none;
 
     & .shine {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: var(--holographic);
-    opacity: 0;
-    transition: opacity 0.1s ease;
-    pointer-events: none;
-    mix-blend-mode: hard-light;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        opacity: 0;
+        transition: opacity 0.1s ease;
+        pointer-events: none;
+        background-color: rgba(255, 255, 255, 0.5);
+
+        &.holographic{
+            background: var(--holographic) !important;
+            mix-blend-mode: hard-light;
+        }
+
     }
 }
 
