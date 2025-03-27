@@ -17,16 +17,19 @@
         linear-gradient(115deg, var(--color1) 5%, var(--color4) 10%, var(--color2), var(--color6) 20%, var(--color4), var(--color4) 30%, var(--color2), var(--color5) 40%, var(--color1), var(--color4) 70%);
 }
 
-body {
-    background-color: midnightblue;
-    color: white;
-    text-align: center;
-}
-
 img {
     width: 100%;
     max-width: 25rem;
     border-radius: 20px;
+}
+
+body {
+    background:midnightblue;
+    color: white;
+}
+
+#cards-container {
+    background: #351f80;
 }
 
 #player-card {
@@ -60,4 +63,8 @@ img {
 
 .card {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+.seperator {
+    border: 1px solid white;
 }
