@@ -11,8 +11,8 @@
         <h1 class="m-3 fw-bold text-center">SplashDown Player Showcase</h1>
             
         <div id="cards-container" class="py-2 mt-2">
-            <div id="container-inner" class="card rounded-start-0 text-white p-2">
-
+            <div id="container-inner" class="card rounded-start-0 text-white p-2 me-2">
+                <!-- Populated with JS -->
             </div>
         </div>
         
@@ -62,7 +62,7 @@
                             </div>
                         `;
                         const seperator = document.createElement('div');
-                        seperator.className = 'seperator mb-3';
+                        seperator.className = 'seperator mb-3 mb-lg-0';
                         seperator.innerHTML = '';
                         playerCardsContainer.appendChild(playerCard);
                         if (index !== lastIndex){
