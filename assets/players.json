@@ -1,18 +1,4 @@
 {
-    "Valia!": {
-        "card_name": "Valia",
-        "card_effect": "holographic",
-        "role": "Slayer",
-        "gold": 1,
-        "silver": 0,
-        "bronze": 0,
-        "weapon_1": "Tri-Slosher Nouveau",
-        "weapon_2": "Tri-Slosher",
-        "weapon_3": null,
-        "bio": "Bio Placeholder",
-        "pros": "Pros Placeholder",
-        "cons": "Cons Placeholder"
-    },
     "NickFanboy": {
         "card_name": "Nick",
         "card_effect": "",
@@ -23,6 +9,20 @@
         "weapon_1": "Order Splatana Replica",
         "weapon_2": "Splatana Stamper Nouveau",
         "weapon_3": "Tentatek Splattershot",
+        "bio": "Bio Placeholder",
+        "pros": "Pros Placeholder",
+        "cons": "Cons Placeholder"
+    },
+    "Valia!": {
+        "card_name": "Valia",
+        "card_effect": "holographic",
+        "role": "Slayer",
+        "gold": 1,
+        "silver": 0,
+        "bronze": 0,
+        "weapon_1": "Tri-Slosher Nouveau",
+        "weapon_2": "Tri-Slosher",
+        "weapon_3": null,
         "bio": "Bio Placeholder",
         "pros": "Pros Placeholder",
         "cons": "Cons Placeholder"
